@@ -8,7 +8,7 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
 
     def __init__(self, config, output_path, verbose):
         super().__init__(config, output_path, verbose)
-        self.number_factors = config['number_factors']
+        self.n_components = config['n_components']
         self.verbose = verbose
 
     def find_factors(self, values: np.ndarray) -> np.ndarray:
@@ -35,8 +35,8 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
             print(eigen_values)
             print('Sorted eigen vectors')
             print(eigen_vectors)
-        if self.number_factors > 0:
-            eigen_vectors = eigen_vectors[:, :self.number_factors]
+        if self.n_components > 0:
+            eigen_vectors = eigen_vectors[:, :self.n_components]
         return values.dot(eigen_vectors)
 
     # Auxiliary methods

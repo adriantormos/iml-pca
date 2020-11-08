@@ -1,0 +1,14 @@
+{
+    "data": {
+        "name": "breast",
+        "classes_to_numerical": {"benign": 0, "malignant": 1},
+        "prepare": [{"name": "shuffle"}]
+    },
+    "algorithm": {
+	"type": "factor_analysis",
+        "name": "decomposition_pca",
+	"params": {"n_components": 2}
+    },
+    "charts": [],
+    "manual_seed": 0
+}

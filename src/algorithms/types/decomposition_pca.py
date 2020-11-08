@@ -9,11 +9,11 @@ class DecompositionPCAlgorithm(FactorAnalysisAlgorithm):
 
     def __init__(self, config, output_path, verbose):
         super().__init__(config, output_path, verbose)
-        self.number_factors = config['number_factors']
+        self.params = config['params']
         self.verbose = verbose
 
     def find_factors(self, values: np.ndarray) -> np.ndarray:
-        algorithm = PCA(n_components=self.number_factors)
+        algorithm = PCA(**self.params)
         algorithm.fit(values)
         if self.verbose:
             print('Sorted eigen values')
