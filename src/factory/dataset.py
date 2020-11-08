@@ -3,6 +3,7 @@ from src.data.types.kropt import KroptDataset
 from src.data.types.hypothyroid import HypothyroidDataset
 from src.data.types.breast import BreastDataset
 from src.data.types.reduced_dataset import ReducedDataset
+from src.data.types.test import TestDataset
 
 
 class DatasetFactory:
@@ -20,7 +21,9 @@ class DatasetFactory:
         elif name == 'breast':
             dataset = BreastDataset(config, verbose)
         elif name == 'reduced':
-            dataset = ReducedDataset
+            dataset = ReducedDataset(config, verbose)
+        elif name == 'test':
+            dataset = TestDataset(config, verbose)
         else:
             raise Exception('The dataset with name ' + name + ' does not exist')
         if issubclass(type(dataset), Dataset):

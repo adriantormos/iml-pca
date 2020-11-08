@@ -23,7 +23,7 @@ def parse_arguments():
     parser.add_argument('--output_path', default=None, help="Path to output directory", required=False)
     parser.add_argument('--visualize', default=True, type=parse_bool, help="Move standard output to a log file",
                         required=False)
-    parser.add_argument('--verbose', default=False, type=parse_bool, help="Show more info", required=False)
+    parser.add_argument('--verbose', default=True, type=parse_bool, help="Show more info", required=False)
     args = parser.parse_args()
 
     # TODO check the first path is a file and a json

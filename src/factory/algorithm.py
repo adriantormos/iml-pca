@@ -1,7 +1,9 @@
 from src.algorithms.unsupervised_algorithm import UnsupervisedAlgorithm
 from src.algorithms.factor_analysis_algorithm import FactorAnalysisAlgorithm
 from src.algorithms.types.kmeans import KMeansAlgorithm
-from src.algorithms.types.pca import PCAlgorithm
+from src.algorithms.types.our_pca import OurPCAlgorithm
+from src.algorithms.types.decomposition_pca import DecompositionPCAlgorithm
+from src.algorithms.types.incremental_pca import IncrementalPCAlgorithm
 from src.algorithms.types.tsne import TSNEAlgorithm
 
 class AlgorithmFactory:
@@ -24,8 +26,12 @@ class AlgorithmFactory:
     @staticmethod
     def select_factor_analysis_algorithm(config, output_path, verbose) -> FactorAnalysisAlgorithm:
         name = config['name']
-        if name == 'pca':
-            algorithm = PCAlgorithm(config, output_path, verbose)
+        if name == 'our_pca':
+            algorithm = OurPCAlgorithm(config, output_path, verbose)
+        elif name == 'decomposition_pca':
+            algorithm = DecompositionPCAlgorithm(config, output_path, verbose)
+        elif name == 'incremental_pca':
+            algorithm = IncrementalPCAlgorithm(config, output_path, verbose)
         elif name == 't-sne':
             algorithm = TSNEAlgorithm(config, output_path, verbose)
         else:

@@ -6,7 +6,8 @@
     },
     "algorithm": {
 	"type": "factor_analysis",
-        "name": "pca"
+        "name": "our_pca",
+	"number_factors": 2
     },
     "charts": [],
     "manual_seed": 0

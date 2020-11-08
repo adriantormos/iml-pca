@@ -3,10 +3,11 @@ import pandas as pd
 
 
 def recreate_dataframe(old_dataframe: pd.DataFrame, new_values: np.ndarray) -> pd.DataFrame:
+    print()
     aux = np.concatenate((new_values, old_dataframe.iloc[:,-1:]), axis=1)
     return pd.DataFrame(data = aux,
                         index = [x for x in range(new_values.shape[0])],
-                        columns = old_dataframe.columns)
+                        columns = [x for x in range(new_values.shape[1] + 1)])
 
 
 def shuffle(dataset):
