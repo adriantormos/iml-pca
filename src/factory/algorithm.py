@@ -32,7 +32,7 @@ class AlgorithmFactory:
             algorithm = DecompositionPCAlgorithm(config, output_path, verbose)
         elif name == 'incremental_pca':
             algorithm = IncrementalPCAlgorithm(config, output_path, verbose)
-        elif name == 't-sne':
+        elif name == 'tsne':
             algorithm = TSNEAlgorithm(config, output_path, verbose)
         else:
             raise Exception('The factor analysis algorithm with name ' + name + ' does not exist')
