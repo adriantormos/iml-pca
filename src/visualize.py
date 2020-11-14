@@ -7,9 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas.plotting import parallel_coordinates
-#from plotly.offline import plot
-#import plotly.graph_objs as go
-#from sklearn.decomposition import PCA
+import itertools
 
 
 def show_charts(config, output_path, values, labels, output_labels, visualize, dataframe, verbose):
@@ -133,43 +131,27 @@ def show_pair_wise_scatter_plot(config, output_path, values, labels, output_labe
     plt.show()
 
 
-#def show_clusters_pca_2d(config, output_path, values, labels, output_labels, visualize, dataframe, verbose):
-#    # trace1 is for 'Cluster 0'
-#    plotX = dataframe.copy()
-#    pca_2d = PCA(n_components=2)
-#    PCs_2d = pd.DataFrame(pca_2d.fit_transform(plotX.drop(["Class"], axis=1)))
-#    PCs_2d.columns = ["PC1_2d", "PC2_2d"]
-#    plotX = pd.concat([plotX, PCs_2d], axis=1, join='inner')
-#    cluster0 = plotX[plotX["Class"] == 0]
-#    cluster1 = plotX[plotX["Class"] == 1]
-#
-#    trace1 = go.Scatter(
-#        x=cluster0["PC1_2d"],
-#        y=cluster0["PC2_2d"],
-#        mode="markers",
-#        name="Cluster 0",
-#        marker=dict(color='rgba(65, 0, 0, 0.8)'),
-#        text=None)
-#    trace2 = go.Scatter(
-#        x=cluster1["PC1_2d"],
-#        y=cluster1["PC2_2d"],
-#        mode="markers",
-#        name="Cluster 1",
-#        marker=dict(color='rgba(65, 65, 0, 0.8)'),
-#        text=None)
-#
-#    title = "Visualizing clusters in two dimensions using PCA of the kropt dataset"
-#
-#    fig = go.Figure(
-#        layout=go.Layout(
-#            title=title,
-#            xaxis=dict(title='PC1', ticklen=5, zeroline=False),
-#            yaxis=dict(title='PC2', ticklen=5, zeroline=False)
-#        )
-#    )
-#    #fig.add_layout_image(layout)
-#    fig.add_trace(trace1)
-#    fig.add_trace(trace2)
-#    if output_path is not None:
-#        fig.write_image(output_path + '/plot_clusters_2d_pca_labels.png')
-#    plot(fig)
+def show_clusters_2d(config, output_path, values, labels, output_labels, visualize, dataframe, verbose):
+    number_clusters = len(np.unique(labels))
+
+    clusters = []
+    for i in range(number_clusters):
+        cluster_indices = [x for x in range(labels.shape[0]) if labels[x] == i]
+        clusters.append(np.take(values, cluster_indices, axis=0))
+
+    f, ax = plt.subplots(number_clusters + 1, 1, figsize=(10, 20))
+    ax[0].set_title(config['title'])
+    colors = itertools.cycle(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
+    for index, cluster in enumerate(clusters):
+        color = next(colors)
+        ax[0].scatter(cluster[:,0], cluster[:,1], color=color, label='Cluster ' + str(index))
+        ax[index+1].scatter(cluster[:, 0], cluster[:, 1], color=color)
+        ax[index+1].set_ylabel('Dimension 0')
+        ax[index+1].set_xlabel('Dimension 1')
+    ax[0].legend()
+    ax[0].set_ylabel('Dimension 0')
+    ax[0].set_xlabel('Dimension 1')
+    if output_path is not None:
+        plt.savefig(output_path + '/2d_cluster_plots', bbox_inches='tight')
+    plt.show()
+
