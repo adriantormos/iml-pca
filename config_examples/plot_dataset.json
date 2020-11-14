@@ -1,0 +1,9 @@
+{
+	"data": {
+        "name": "breast",
+        "classes_to_numerical": {"benign": 0, "malignant": 1},
+        "prepare": [{"name": "shuffle"}]
+	},
+    "charts": [{"name": "show_pair_wise_scatter_plot", "title": "Scatter plot"}],
+    "manual_seed": 0
+}
