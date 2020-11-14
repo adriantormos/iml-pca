@@ -12,8 +12,8 @@ class TSNEAlgorithm(FactorAnalysisAlgorithm):
         self.params = config['params']
         self.algorithm = TSNE(**self.params)
 
-    def find_factors(self, values: np.ndarray) -> np.ndarray:
-        return self.algorithm.fit_transform(values)
+    def find_factors(self, values: np.ndarray) -> (np.ndarray, np.ndarray):
+        return self.algorithm.fit_transform(values), None
 
     # Auxiliary methods
 

@@ -15,7 +15,7 @@ class IncrementalPCAlgorithm(FactorAnalysisAlgorithm):
         self.batch_size = self.params['batch_size']
         self.verbose = verbose
 
-    def find_factors(self, values: np.ndarray) -> np.ndarray:
+    def find_factors(self, values: np.ndarray) -> (np.ndarray, np.ndarray):
         algorithm = IncrementalPCA(**self.params)
         algorithm.fit(values)
         if self.verbose:
@@ -27,6 +27,8 @@ class IncrementalPCAlgorithm(FactorAnalysisAlgorithm):
             print(algorithm.explained_variance_)
             print('Explained variance ratio')
             print(algorithm.explained_variance_ratio_)
-        return algorithm.transform(values)
+        transformed_values = algorithm.transform(values)
+        reconstructed_values = algorithm.inverse_transform(transformed_values)
+        return transformed_values, reconstructed_values
 
     # Auxiliary methods

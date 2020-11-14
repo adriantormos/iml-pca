@@ -16,7 +16,7 @@ class FactorAnalysisAlgorithm:
         pass
 
     @abc.abstractmethod
-    def find_factors(self, values: np.ndarray) -> np.ndarray:
+    def find_factors(self, values: np.ndarray) -> (np.ndarray, np.ndarray):
         raise NotImplementedError('Method not implemented in interface class')
 
     # Auxiliary methods

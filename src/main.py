@@ -67,14 +67,17 @@ def main(config_path: str, output_path: str, visualize: bool, verbose: bool):
             if 'optimizer' in config:
                 optimizer_config = config['optimizer']
                 optimizer = OptimizerFactory.select_optimizer(optimizer_config, algorithm_config, output_path, verbose)
-                output_values = optimizer.run(values, labels)
+                output_values, reconstructed_values = optimizer.run(values, labels)
             else:
                 algorithm = AlgorithmFactory.select_factor_analysis_algorithm(algorithm_config, output_path, verbose)
-                output_values = algorithm.find_factors(values)
+                output_values, reconstructed_values = algorithm.find_factors(values)
             show_charts(charts_config, output_path, output_values, labels, None, visualize, dataset.get_preprocessed_dataframe(), verbose)
             if output_path is not None:
                 data_frame = recreate_dataframe(dataset.get_preprocessed_dataframe(), output_values)
                 data_frame.to_csv(output_path + '/output_dataframe.csv', sep=',')
+                if reconstructed_values is not None:
+                    data_frame = recreate_dataframe(dataset.get_preprocessed_dataframe(), reconstructed_values)
+                    data_frame.to_csv(output_path + '/reconstructed_dataframe.csv', sep=',')
         else:
             raise Exception('The specified algorithm type does not exist')
     else:

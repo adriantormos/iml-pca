@@ -11,7 +11,7 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
         self.n_components = config['params']['n_components']
         self.verbose = verbose
 
-    def find_factors(self, values: np.ndarray) -> np.ndarray:
+    def find_factors(self, values: np.ndarray) -> (np.ndarray, np.ndarray):
         # Compute the d-dimensional mean vector
         dimensions_mean = values.mean(axis=0)
         if self.verbose:
@@ -63,7 +63,10 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
         # Choose n_components eigenvectors with the largest eigenvalues
         if self.n_components > 0:
             values = values[:, :self.n_components]
+            eigen_vectors = eigen_vectors[:self.n_components]
 
-        return values
+        reconstructed_values = values.dot(eigen_vectors)
+
+        return values, reconstructed_values
 
     # Auxiliary methods
