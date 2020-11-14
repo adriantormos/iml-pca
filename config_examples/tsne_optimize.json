@@ -7,11 +7,11 @@
     "algorithm": {
 	"type": "factor_analysis",
         "name": "tsne",
-	"params": {"n_components": 3, "n_iter": 250}
+	"params": {"n_components": 2, "n_iter": 250}
     },
     "optimizer": {
         "name": "tsne",
-        "params": [{"name": "n_iter", "values": [250, 260, 270]}],
+        "params": [],
         "use_best_parameters": 1,
         "n_runs": 2
     },
