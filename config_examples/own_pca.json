@@ -7,7 +7,7 @@
     "algorithm": {
 	"type": "factor_analysis",
         "name": "our_pca",
-	"number_factors": 2
+	    "n_components": 2
     },
     "charts": [],
     "manual_seed": 0
