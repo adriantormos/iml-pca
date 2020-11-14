@@ -1,5 +1,6 @@
 from src.optimizers.optimizer import Optimizer
 from src.optimizers.types.unsupervised import UnsupervisedOptimizer
+from src.optimizers.types.tsne import TSNEOptimizer
 
 
 class OptimizerFactory:
@@ -12,6 +13,8 @@ class OptimizerFactory:
         name = optimizer_config['name']
         if name == 'unsupervised':
             optimizer = UnsupervisedOptimizer(optimizer_config, algorithm_config, output_path, verbose)
+        elif name == 'tsne':
+            optimizer = TSNEOptimizer(optimizer_config, algorithm_config, output_path, verbose)
         else:
             raise Exception('The optimizers with name ' + name + ' does not exist')
         if issubclass(type(optimizer), Optimizer):

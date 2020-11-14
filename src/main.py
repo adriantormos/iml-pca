@@ -64,8 +64,13 @@ def main(config_path: str, output_path: str, visualize: bool, verbose: bool):
             if output_path is not None:
                 np.save(output_path + '/predicted_labels', output_labels)
         elif _type == 'factor_analysis':
-            algorithm = AlgorithmFactory.select_factor_analysis_algorithm(algorithm_config, output_path, verbose)
-            output_values = algorithm.find_factors(values)
+            if 'optimizer' in config:
+                optimizer_config = config['optimizer']
+                optimizer = OptimizerFactory.select_optimizer(optimizer_config, algorithm_config, output_path, verbose)
+                output_values = optimizer.run(values, labels)
+            else:
+                algorithm = AlgorithmFactory.select_factor_analysis_algorithm(algorithm_config, output_path, verbose)
+                output_values = algorithm.find_factors(values)
             show_charts(charts_config, output_path, output_values, labels, None, visualize, dataset.get_preprocessed_dataframe(), verbose)
             if output_path is not None:
                 data_frame = recreate_dataframe(dataset.get_preprocessed_dataframe(), output_values)

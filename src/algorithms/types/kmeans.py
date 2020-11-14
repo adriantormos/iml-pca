@@ -10,9 +10,9 @@ class KMeansAlgorithm(UnsupervisedAlgorithm):
 
     def __init__(self, config, output_path, verbose):
         super().__init__(config, output_path, verbose)
-        self.n_clusters = config['n_clusters']
-        self.max_iter = config['max_iter']
-        self.init_centroids = config['init_centroids'] if 'init_centroids' in config else 'random'
+        self.n_clusters = config['params']['n_clusters']
+        self.max_iter = config['params']['max_iter']
+        self.init_centroids = config['params']['init_centroids'] if 'init_centroids' in config else 'random'
         self.verbose = verbose
         self.maximization_function = 'average'
         if 'maximization_function' in config:

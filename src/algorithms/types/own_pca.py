@@ -8,7 +8,7 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
 
     def __init__(self, config, output_path, verbose):
         super().__init__(config, output_path, verbose)
-        self.n_components = config['n_components']
+        self.n_components = config['params']['n_components']
         self.verbose = verbose
 
     def find_factors(self, values: np.ndarray) -> np.ndarray:

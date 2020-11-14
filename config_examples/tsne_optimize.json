@@ -6,8 +6,14 @@
     },
     "algorithm": {
 	"type": "factor_analysis",
-        "name": "our_pca",
-	"params": {"n_components": 2}
+        "name": "tsne",
+	"params": {"n_components": 3, "n_iter": 250}
+    },
+    "optimizer": {
+        "name": "tsne",
+        "params": [{"name": "n_iter", "values": [250, 260, 270]}],
+        "use_best_parameters": 1,
+        "n_runs": 2
     },
     "charts": [],
     "manual_seed": 0
