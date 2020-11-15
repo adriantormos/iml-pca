@@ -28,7 +28,7 @@ class OurPCAlgorithm(FactorAnalysisAlgorithm):
             print(covariance_matrix)
 
         # Calculate eigenvectors and their corresponding eigenvalues of the covariance matrix
-        eigen_values, eigen_vectors = np.linalg.eig(covariance_matrix)
+        eigen_values, eigen_vectors = np.linalg.eigh(covariance_matrix)
         if self.verbose:
             print('Eigen values')
             print(eigen_values)
