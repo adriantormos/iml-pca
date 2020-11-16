@@ -1,0 +1,21 @@
+{
+  "data": {
+    "name": "kropt",
+    "balance": 0,
+    "prepare": [
+      {
+        "name": "shuffle"
+      }
+    ]
+  },
+  "algorithm": {
+    "type": "factor_analysis",
+    "name": "our_pca",
+    "show_variance_plots": 0,
+    "params": {
+      "n_components": 3
+    }
+  },
+  "charts": [],
+  "manual_seed": 0
+}
