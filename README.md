@@ -4,7 +4,7 @@ _This component was created as a result of the IML subject in the MAI Masters de
 
 ## Introduction
 
-This README is divided in the following sections:
+This README is divided into the following 4 sections:
 - Main funcionalities: We explain the funcionalities of the component
 - Files structure: We explain the files and directories purposes that are included in this repository
 - How to install: We explain how to set up the component
@@ -47,7 +47,7 @@ This component has 3 main funcionalities:
 
 It is necessary to run the main.py file with the following parameters:
 - config_path: json file with all the parameters that define the experiment to run
-- output_path: (optional) path to where save the experiment results
+- output_path: (optional) path defining the directory to save the experiment results
 
 An example:
 - python3 --config_path ../config_examples/own_path.json --output_path ../output
@@ -57,7 +57,8 @@ An example:
 In this part we explain briefly the different parts of the configuration file. The configuration file is splitted into 4 sections:
 - data: configuration of the dataset to use and the preprocessing steps
     - hypothyroid: A default configuration:
-    `"data": {
+    ```
+  "data": {
         "name": "hypothyroid",
         "balance": 0,
         "classes_to_numerical": {
@@ -68,68 +69,87 @@ In this part we explain briefly the different parts of the configuration file. T
         },
         "only_numerical": 0,
         "prepare": [{"name": "shuffle"}]
-    }`
+    }
+  ```
     - breast: A default configuration:
-    `"data": {
+    ```
+  "data": {
         "name": "breast",
         "classes_to_numerical": {
             "benign": 0,
             "malignant": 1
         },
         "prepare": [{"name": "shuffle"}]
-    }`
+    }
+  ```
     - kropt: A default configuration:
-    `"data": {
+    ```
+  "data": {
         "name": "kropt",
         "balance": 0,
         "prepare": [{"name": "shuffle"}]
-    }`
+    }
+  ```
     - csv: A default configuration to load any csv file
-    `"data": {
+    ```
+  "data": {
         "name": "reduced",
         "path": "../path_dataframe.csv",
         "prepare": [{"name": "shuffle"}]
-    }`
+    }
+  ```
 - algorithm (optional): configuration of the algorithm to run
     - own_pca: A default configuration:
-    `"algorithm": {
+    ```
+  "algorithm": {
 	    "type": "factor_analysis",
         "name": "our_pca",
 	    "params": {"n_components": 2}
-    }`
+    }
+  ```
     - sklearn_decomposition_pca: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
-    `"algorithm": {
+    ```
+  "algorithm": {
 	    "type": "factor_analysis",
         "name": "decomposition_pca",
 	    "params": {"n_components": 2}
-    }`
+    }
+  ```
     - sklearn_incremental_pca: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
-    `"algorithm": {
+    ```
+  "algorithm": {
 	    "type": "factor_analysis",
         "name": "incremental_pca",
 	    "params": {"n_components": 2, "batch_size": 100}
-    }`
+    }
+  ```
     - tsne: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
-    `"algorithm": {
+    ```
+  "algorithm": {
 	    "type": "factor_analysis",
         "name": "tsne",
 	    "params": {"n_components": 2, "n_iter": 250}
-    }`
+    }
+  ```
     - kmeans: A default configuration:
-    `"algorithm": {
+    ```
+  "algorithm": {
 	    "type": "unsupervised",
         "name": "kmeans",
 	    "params": {"n_clusters": 2, "max_iter": 100}
-    }`
+    }
+  ```
 - optimizer (optional): configuration to optimize some algorithms
     - kmeans: A default configuration to optimize the number of clusters of the kmeans algorithm with the davies-bouldin metric
-    `"optimizer": {
+    ```
+  "optimizer": {
         "name": "unsupervised",
         "metrics": ["davies_bouldin"],
-        "params": [],
+        "params": [{"name": "n_clusters", "values": [2, 3, 4, 5, 6]}],
         "use_best_parameters": 0,
         "n_runs": 5
-    }`
+    }
+  ```
 - charts: configuration to generate charts
     - class_frequencies_separated: show class frequencies of the classes of the input dataset. A default configuration:
     `{"name": "class_frequencies_separate"}`
