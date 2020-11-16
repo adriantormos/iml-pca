@@ -18,7 +18,11 @@
   "charts": [
     {
       "name": "show_clusters_2d",
-      "title": "Kropt dataset clusters represented in 2d thanks to T-SNE"
+      "title": "Kropt dataset clusters represented in 2d thanks to T-SNE",
+      "figsize": [
+        40,
+        80
+      ]
     }
   ],
   "manual_seed": 0
