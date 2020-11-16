@@ -120,6 +120,11 @@ class HypothyroidDataset(Dataset):
         data[self.class_feature] = data[self.class_feature].str.decode("utf-8")
         data[self.class_feature] = data[self.class_feature].map(self.classes_to_numerical)
 
+        # Move class feature to the end
+        cols_at_end = [self.class_feature]
+        data = data[[c for c in data if c not in cols_at_end]
+                + [c for c in cols_at_end if c in data]]
+
         if self.verbose:
             print('Finished data preprocessing')
 
