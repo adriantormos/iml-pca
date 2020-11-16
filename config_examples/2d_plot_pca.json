@@ -1,0 +1,14 @@
+{
+    "data": {
+        "name": "breast",
+        "classes_to_numerical": {"benign": 0, "malignant": 1},
+        "prepare": [{"name": "shuffle"}]
+    },
+    "algorithm": {
+	    "type": "factor_analysis",
+        "name": "pca",
+	    "params": {"n_components": 2, "batch_size": 100}
+    },
+    "charts": [{"name": "show_clusters_2d", "title": "breast dataset clusters represented in 2d thanks to incremental PCA", "figsize": [10, 20]}],
+    "manual_seed": 0
+}

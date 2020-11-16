@@ -1,0 +1,30 @@
+{
+  "data": {
+    "name": "kropt",
+    "balance": 0,
+    "prepare": [
+      {
+        "name": "shuffle"
+      }
+    ]
+  },
+  "algorithm": {
+    "type": "factor_analysis",
+    "name": "incremental_pca",
+    "params": {
+      "n_components": 2,
+      "batch_size": 100
+    }
+  },
+  "charts": [
+    {
+      "name": "show_clusters_2d",
+      "title": "kropt dataset clusters represented in 2d thanks to incremental PCA",
+      "figsize": [
+        40,
+        80
+      ]
+    }
+  ],
+  "manual_seed": 0
+}
