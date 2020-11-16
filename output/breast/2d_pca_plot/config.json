@@ -1,0 +1,28 @@
+{
+  "data": {
+    "name": "breast",
+    "classes_to_numerical": {
+      "benign": 0,
+      "malignant": 1
+    },
+    "prepare": [
+      {
+        "name": "shuffle"
+      }
+    ]
+  },
+  "algorithm": {
+    "type": "factor_analysis",
+    "name": "decomposition_pca",
+    "params": {
+      "n_components": 2
+    }
+  },
+  "charts": [
+    {
+      "name": "show_clusters_2d",
+      "title": "Breast dataset clusters represented in 2d thanks to PCA"
+    }
+  ],
+  "manual_seed": 0
+}
