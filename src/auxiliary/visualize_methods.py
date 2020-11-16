@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def compare_multiple_lines(x_array, lines, title, output_path, legend=True, xlabel=None, ylabel='Score', ylim=None):
+def compare_multiple_lines(x_array, lines, title, output_path, legend=True, xlabel=None, ylabel='Score', ylim=None, legend_position='upper right'):
     # pre: the len of the input line must have the same dimension as the x_array
     #      the input lines must have two dimensions (data, label)
     fig, ax = plt.subplots()
@@ -10,7 +10,7 @@ def compare_multiple_lines(x_array, lines, title, output_path, legend=True, xlab
         data, label = line
         ax.plot(x_array, data, label=label)
     if legend:
-        ax.legend(loc='upper right', shadow=True)
+        ax.legend(loc=legend_position, shadow=True)
     plt.title(title)
     if ylim is not None:
         plt.ylim(ylim)
