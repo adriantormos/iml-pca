@@ -8,7 +8,7 @@
       "primary_hypothyroid": 2,
       "secondary_hypothyroid": 3
     },
-    "only_numerical": 0,
+    "only_numerical": 1,
     "prepare": [
       {
         "name": "shuffle"
@@ -20,7 +20,7 @@
     "name": "our_pca",
     "show_variance_plots": 0,
     "params": {
-      "n_components": 15
+      "n_components": 5
     }
   },
   "charts": [],

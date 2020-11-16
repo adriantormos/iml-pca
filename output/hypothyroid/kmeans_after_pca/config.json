@@ -1,0 +1,47 @@
+{
+  "data": {
+    "name": "reduced",
+    "path": "../output/hypothyroid/pca/reduction_to_10_components/output_dataframe.csv",
+    "prepare": [
+      {
+        "name": "shuffle"
+      }
+    ]
+  },
+  "algorithm": {
+    "type": "unsupervised",
+    "name": "kmeans",
+    "params": {
+      "n_clusters": 4,
+      "max_iter": 200
+    }
+  },
+  "optimizer": {
+    "name": "unsupervised",
+    "metrics": [
+      "davies_bouldin"
+    ],
+    "params": [],
+    "use_best_parameters": 0,
+    "n_runs": 5
+  },
+  "charts": [
+    {
+      "name": "class_frequencies"
+    },
+    {
+      "name": "show_metrics_table",
+      "metrics": [
+        "davies_bouldin",
+        "adjusted_rand"
+      ]
+    },
+    {
+      "name": "show_classification_report"
+    },
+    {
+      "name": "show_confusion_matrix"
+    }
+  ],
+  "manual_seed": 0
+}
