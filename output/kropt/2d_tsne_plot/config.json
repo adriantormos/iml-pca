@@ -1,0 +1,25 @@
+{
+  "data": {
+    "name": "kropt",
+    "balance": 0,
+    "prepare": [
+      {
+        "name": "shuffle"
+      }
+    ]
+  },
+  "algorithm": {
+    "type": "factor_analysis",
+    "name": "tsne",
+    "params": {
+      "n_components": 2
+    }
+  },
+  "charts": [
+    {
+      "name": "show_clusters_2d",
+      "title": "Kropt dataset clusters represented in 2d thanks to T-SNE"
+    }
+  ],
+  "manual_seed": 0
+}
