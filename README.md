@@ -102,41 +102,42 @@ In this part we explain briefly the different parts of the configuration file. T
     - own_pca: A default configuration:
     ```
   "algorithm": {
-	    "type": "factor_analysis",
+	       "type": "factor_analysis",
         "name": "our_pca",
-	    "params": {"n_components": 2}
+        "show_variance_plots": 1,
+	       "params": {"n_components": 2}
     }
   ```
     - sklearn_decomposition_pca: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
     ```
   "algorithm": {
-	    "type": "factor_analysis",
+	       "type": "factor_analysis",
         "name": "decomposition_pca",
-	    "params": {"n_components": 2}
+	       "params": {"n_components": 2}
     }
   ```
     - sklearn_incremental_pca: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
     ```
   "algorithm": {
-	    "type": "factor_analysis",
+	       "type": "factor_analysis",
         "name": "incremental_pca",
-	    "params": {"n_components": 2, "batch_size": 100}
+	       "params": {"n_components": 2, "batch_size": 100}
     }
   ```
     - tsne: A default configuration, all the parameters of the sklearn library can be added to the params attribute:
     ```
   "algorithm": {
-	    "type": "factor_analysis",
+	       "type": "factor_analysis",
         "name": "tsne",
-	    "params": {"n_components": 2, "n_iter": 250}
+	       "params": {"n_components": 2, "n_iter": 250}
     }
   ```
     - kmeans: A default configuration:
     ```
   "algorithm": {
-	    "type": "unsupervised",
+	       "type": "unsupervised",
         "name": "kmeans",
-	    "params": {"n_clusters": 2, "max_iter": 100}
+	       "params": {"n_clusters": 2, "max_iter": 100}
     }
   ```
 - optimizer (optional): configuration to optimize some algorithms
