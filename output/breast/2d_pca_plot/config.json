@@ -21,7 +21,11 @@
   "charts": [
     {
       "name": "show_clusters_2d",
-      "title": "Breast dataset clusters represented in 2d thanks to PCA"
+      "title": "Breast dataset represented in 2d thanks to decomposition PCA",
+      "figsize": [
+        10,
+        20
+      ]
     }
   ],
   "manual_seed": 0

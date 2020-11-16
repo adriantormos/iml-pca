@@ -13,7 +13,7 @@
   },
   "algorithm": {
     "type": "factor_analysis",
-    "name": "tsne",
+    "name": "decomposition_pca",
     "params": {
       "n_components": 2
     }
@@ -21,7 +21,11 @@
   "charts": [
     {
       "name": "show_clusters_2d",
-      "title": "Breast dataset represented in 2d thanks to T-SNE"
+      "title": "kropt dataset clusters represented in 2d thanks to decomposition PCA",
+      "figsize": [
+        10,
+        20
+      ]
     }
   ],
   "manual_seed": 0

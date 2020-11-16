@@ -25,7 +25,11 @@
   "charts": [
     {
       "name": "show_clusters_2d",
-      "title": "Hypothyroid dataset clusters represented in 2d thanks to PCA"
+      "title": "hypothyroid dataset clusters represented in 2d thanks to decomposition PCA",
+      "figsize": [
+        10,
+        20
+      ]
     }
   ],
   "manual_seed": 0

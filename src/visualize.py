@@ -149,7 +149,7 @@ def show_clusters_2d(config, output_path, values, labels, output_labels, visuali
     colors = itertools.cycle(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
     for index, cluster in enumerate(clusters):
         color = next(colors)
-        ax[0].scatter(cluster[:,0], cluster[:,1], color=color, label='Cluster ' + str(index))
+        ax[0].scatter(cluster[:,0], cluster[:,1], color=color, label='Class ' + str(index))
         ax[index+1].scatter(cluster[:, 0], cluster[:, 1], color=color)
         ax[index+1].set_ylabel('Dimension 0')
         ax[index+1].set_xlabel('Dimension 1')

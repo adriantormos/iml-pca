@@ -25,7 +25,7 @@
   "charts": [
     {
       "name": "show_clusters_2d",
-      "title": "Hypothyroid dataset clusters represented in 2d thanks to T-SNE"
+      "title": "Hypothyroid dataset represented in 2d thanks to T-SNE"
     }
   ],
   "manual_seed": 0
