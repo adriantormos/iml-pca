@@ -111,35 +111,40 @@ def show_parallel_coordinates(config, output_path, values, labels, output_labels
 
 
 def show_pair_wise_scatter_plot(config, output_path, values, labels, output_labels, visualize, dataframe, verbose):
-    pp = sns.pairplot(dataframe, hue=dataframe.columns[-1], height=1.8, aspect=1.8, plot_kws=dict(edgecolor="black", linewidth=0.5))
-    fig = pp.fig
-    fig.subplots_adjust(top=0.93, wspace=0.3)
-    t = fig.suptitle(config['title']  + ' for the original labels', fontsize=14)
-    if output_path is not None:
-        plt.savefig(output_path + '/pair_wise_scatter_plot_labels', bbox_inches='tight')
-    plt.show()
 
-    aux = dataframe.copy()
-    aux[dataframe.columns[-1]] = output_labels
-    pp = sns.pairplot(aux, hue=aux.columns[-1], height=1.8, aspect=1.8,
-                      plot_kws=dict(edgecolor="black", linewidth=0.5))
-    fig = pp.fig
-    fig.subplots_adjust(top=0.93, wspace=0.3)
-    t = fig.suptitle(config['title'] + ' for the predicted labels', fontsize=14)
-    if output_path is not None:
-        plt.savefig(output_path + '/pair_wise_scatter_plot_predicted_labels', bbox_inches='tight')
-    plt.show()
+    if config['original']:
+        pp = sns.pairplot(dataframe, hue=dataframe.columns[-1], height=1.8, aspect=1.8, plot_kws=dict(edgecolor="black", linewidth=0.5))
+        fig = pp.fig
+        fig.subplots_adjust(top=0.93, wspace=0.3)
+        t = fig.suptitle(config['title']  + ' for the original labels', fontsize=14)
+        if output_path is not None:
+            plt.savefig(output_path + '/pair_wise_scatter_plot_labels', bbox_inches='tight')
+        plt.show()
+
+    if config['predicted']:
+        aux = dataframe.copy()
+        aux[dataframe.columns[-1]] = output_labels
+        pp = sns.pairplot(aux, hue=aux.columns[-1], height=1.8, aspect=1.8,
+                          plot_kws=dict(edgecolor="black", linewidth=0.5))
+        fig = pp.fig
+        fig.subplots_adjust(top=0.93, wspace=0.3)
+        t = fig.suptitle(config['title'] + ' for the predicted labels', fontsize=14)
+        if output_path is not None:
+            plt.savefig(output_path + '/pair_wise_scatter_plot_predicted_labels', bbox_inches='tight')
+        plt.show()
 
 
 def show_clusters_2d(config, output_path, values, labels, output_labels, visualize, dataframe, verbose):
     number_clusters = len(np.unique(labels))
+
+    figsize = [10, 20] if 'figsize' not in config else config['figsize']
 
     clusters = []
     for i in range(number_clusters):
         cluster_indices = [x for x in range(labels.shape[0]) if labels[x] == i]
         clusters.append(np.take(values, cluster_indices, axis=0))
 
-    f, ax = plt.subplots(number_clusters + 1, 1, figsize=(10, 20))
+    f, ax = plt.subplots(number_clusters + 1, 1, figsize=(figsize[0], figsize[1]))
     ax[0].set_title(config['title'])
     colors = itertools.cycle(["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"])
     for index, cluster in enumerate(clusters):
