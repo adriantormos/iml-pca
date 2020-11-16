@@ -1,0 +1,16 @@
+{
+  "data": {
+    "name": "reduced",
+    "path": "../output/breast/pca/reduction_to_4_components/reconstructed_dataframe.csv",
+    "prepare": []
+  },
+  "charts": [
+    {
+      "name": "show_pair_wise_scatter_plot",
+      "title": "Breast reconstructed dataset scatter plot",
+      "original": 1,
+      "predicted": 0
+    }
+  ],
+  "manual_seed": 0
+}

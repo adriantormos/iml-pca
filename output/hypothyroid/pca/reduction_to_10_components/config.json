@@ -20,7 +20,7 @@
     "name": "our_pca",
     "show_variance_plots": 0,
     "params": {
-      "n_components": 22
+      "n_components": 10
     }
   },
   "charts": [],
